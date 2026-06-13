@@ -148,7 +148,21 @@ Cloudflare Pages Function (`functions/api/contact.js`):
 3. Redeploy. The form now POSTs to `/api/contact` and sends through Resend.
 
 Secrets live only in the Function's environment; nothing sensitive ships to the
-browser. To test the Function locally: `npx wrangler pages dev out`.
+browser.
+
+**Local testing:** put the same values in a gitignored `.dev.vars` file at the
+project root, then run `npm run build && npx wrangler pages dev out`:
+
+```
+RESEND_API_KEY=re_xxx
+CONTACT_FROM_EMAIL=onboarding@resend.dev
+CONTACT_TO_EMAIL=7edgetechnologies@gmail.com
+```
+
+> Note: `onboarding@resend.dev` is Resend's shared test sender and can only
+> deliver to your own Resend account email. To send from your brand and to any
+> recipient, verify a domain in Resend and set `CONTACT_FROM_EMAIL` to an address
+> on it.
 
 ## SEO & AI discoverability
 
