@@ -26,3 +26,6 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# Cloudflare Pages local secrets
+.dev.vars
