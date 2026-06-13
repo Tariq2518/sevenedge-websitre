@@ -1,0 +1,4 @@
+# Serve the Google Search Console verification file at its exact .html URL
+# (200 = rewrite, not a redirect) so verification doesn't depend on Cloudflare's
+# default .html -> clean-URL 308 redirect.
+/google847d96d40319302a.html  /google847d96d40319302a  200
