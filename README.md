@@ -117,8 +117,14 @@ runs as a Pages Function — no SSR adapter needed.
 
 ```bash
 npm run build
-npx wrangler pages deploy out --project-name sevenedge
+npx wrangler pages deploy        # project name + output dir come from wrangler.toml
 ```
+
+Project settings (name `sevenedge`, output dir `out`, `NEXT_PUBLIC_SITE_URL`)
+live in `wrangler.toml`. Local preview with the contact Function:
+`npx wrangler pages dev out`. Set the optional Resend secrets with
+`npx wrangler pages secret put RESEND_API_KEY` (and `CONTACT_FROM_EMAIL`,
+`CONTACT_TO_EMAIL`).
 
 `/app-ads.txt`, `/robots.txt`, `/sitemap.xml`, `/llms.txt`, `/llms-full.txt` are
 all served as static text from the root automatically.

@@ -1,0 +1,32 @@
+# Cloudflare Pages configuration for 7edge Apps.
+#
+# With this file you can run, from the project root:
+#   npm run build                 # produce ./out (static export)
+#   npx wrangler pages dev out     # local preview WITH the contact Function
+#   npx wrangler pages deploy      # deploy to https://sevenedge.pages.dev
+#
+# The contact form lives in functions/api/contact.js (a Pages Function) and is
+# picked up automatically from the /functions directory.
+
+name = "sevenedge"
+compatibility_date = "2026-06-01"
+
+# Static export output that Pages serves as the site root.
+pages_build_output_dir = "out"
+
+# --- Environment variables ---------------------------------------------------
+# Build-time public var (used for canonical URLs, sitemap, robots, OG, llms.txt).
+# Safe to commit — it is not a secret.
+[vars]
+NEXT_PUBLIC_SITE_URL = "https://sevenedge.pages.dev"
+
+# Contact-form delivery (Resend) is OPTIONAL. Do NOT put secrets here.
+# Set them as encrypted secrets instead, e.g.:
+#   npx wrangler pages secret put RESEND_API_KEY
+#   npx wrangler pages secret put CONTACT_FROM_EMAIL
+#   npx wrangler pages secret put CONTACT_TO_EMAIL
+# (or add them under Pages → Settings → Environment variables in the dashboard).
+# Without them the form gracefully falls back to the "Send an Email" button.
+#
+# functions/api/contact.js uses only Web APIs (fetch/Response), so the
+# Node.js compatibility flag is not required.
