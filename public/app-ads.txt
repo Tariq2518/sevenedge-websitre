@@ -1,0 +1,9 @@
+# app-ads.txt for 7edge Apps
+# ---------------------------------------------------------------------------
+# DEPLOYMENT IS NOT COMPLETE until the line below is replaced with the exact
+# personalized seller record copied from your AdMob account:
+#   AdMob -> Apps -> View all apps -> app-ads.txt -> How to set up app-ads.txt
+# Do not invent the publisher ID. Add other ad networks' official records as
+# additional lines only if you actually use them.
+# ---------------------------------------------------------------------------
+google.com, pub-REPLACE_WITH_REAL_PUBLISHER_ID, DIRECT, f08c47fec0942fa0

@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Brand palette — extracted from the uploaded 7edge Apps logo.
+ * The wordmark uses a coral → magenta → indigo gradient:
+ *   #F36867  →  #AF37DE  →  #4B63F6
+ * The primary brand color below is a balanced indigo-violet drawn from that
+ * gradient; supporting colors are very light tints of it.
+ *
+ * Colors are stored as space-separated RGB channels so Tailwind opacity
+ * modifiers (e.g. bg-brand/40) work. To re-theme after replacing the logo,
+ * update these channel values only.
+ */
+:root {
+  --brand-rgb: 108 69 230; /* #6c45e6 — buttons, links, accents */
+  --brand-hover-rgb: 87 51 201; /* #5733c9 — hover/active */
+  --brand-soft-rgb: 243 239 253; /* #f3effd — light surfaces */
+  --brand-tint-rgb: 235 229 251; /* #ebe5fb — borders, chips */
+
+  --background-rgb: 250 250 251; /* #fafafb — soft off-white */
+  --surface-rgb: 255 255 255; /* #ffffff — cards */
+  --surface-muted-rgb: 245 246 248; /* #f5f6f8 — muted panels */
+
+  --text-primary-rgb: 21 23 26; /* #15171a */
+  --text-secondary-rgb: 91 98 108; /* #5b626c */
+
+  --border-rgb: 232 233 238; /* #e8e9ee */
+
+  /* Decorative gradient reused from the logo for soft background shapes. */
+  --brand-gradient: linear-gradient(135deg, #f36867 0%, #af37de 53%, #4b63f6 100%);
+}
+
+@layer base {
+  * {
+    border-color: rgb(var(--border-rgb));
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: rgb(var(--background-rgb));
+    color: rgb(var(--text-primary-rgb));
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Anchor targets clear the sticky header. */
+  section[id],
+  [data-anchor] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  /* Visible, accessible focus styling. */
+  :focus-visible {
+    outline: 2px solid rgb(var(--brand-rgb));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-content px-5 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full px-5 text-sm font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  .btn-primary {
+    @apply btn bg-brand text-white hover:bg-brand-hover;
+  }
+
+  .btn-secondary {
+    @apply btn border border-line bg-surface text-content-primary hover:border-brand/40 hover:text-brand;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1 text-xs font-medium text-content-secondary;
+  }
+
+  .card {
+    @apply rounded-card border border-line bg-surface;
+  }
+
+  /* Decorative soft brand glow used behind hero / section accents. */
+  .brand-glow {
+    background: var(--brand-gradient);
+    filter: blur(64px);
+    opacity: 0.18;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--brand-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Subtle dot grid for decorative backgrounds. */
+  .bg-dot-grid {
+    background-image: radial-gradient(rgb(var(--brand-tint-rgb)) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+}
+
+/* Scroll-reveal: starts hidden, animates in when .is-visible is added. */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
