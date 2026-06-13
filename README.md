@@ -178,17 +178,13 @@ data all use the real production domain.
 
 ## AdMob app-ads.txt — IMPORTANT
 
-`public/app-ads.txt` ships with a **placeholder publisher ID**. Deployment is not
-complete until you replace it:
-
-```
-google.com, pub-REPLACE_WITH_REAL_PUBLISHER_ID, DIRECT, f08c47fec0942fa0
-```
+`public/app-ads.txt` contains the live seller records (Google AdMob + Tappx),
+served at `/app-ads.txt`. To change them later:
 
 1. Get the exact personalized line from
-   **AdMob → Apps → View all apps → app-ads.txt → How to set up app-ads.txt**.
-2. Replace the placeholder line in `public/app-ads.txt` (root-served at
-   `/app-ads.txt`; do not move it).
+   **AdMob → Apps → View all apps → app-ads.txt → How to set up app-ads.txt**
+   (and the equivalent from any other ad network you use).
+2. Edit `public/app-ads.txt` (root-served at `/app-ads.txt`; do not move it).
 3. Deploy, then verify:
    ```bash
    curl -i https://sevenedge.pages.dev/app-ads.txt   # expect HTTP 200 + the record
