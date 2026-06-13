@@ -29,3 +29,6 @@ yarn-error.log*
 
 # Cloudflare Pages local secrets
 .dev.vars
+
+# wrangler local cache
+.wrangler/
