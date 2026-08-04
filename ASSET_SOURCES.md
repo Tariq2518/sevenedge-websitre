@@ -13,9 +13,11 @@ in sync.
 | `deleted-photo-video-recovery` | Deleted Photo Video Recovery | https://play.google.com/store/apps/details?id=edgerecoveryapp.recoverdata.datarecoveryapp |
 | `status-saver-wa` | Status Saver WA: Video Save | https://play.google.com/store/apps/details?id=sevenedge.edgestatussaver.whatsappstatussaver |
 | `video-downloader-player` | Video Downloader and Player | https://play.google.com/store/apps/details?id=sevenedge.videosaver.videodownloaderapp |
-| `screen-mirroring-cast-to-tv` | Screen Mirroring & Cast to TV | https://play.google.com/store/apps/details?id=miracast.screenmirroring.screencasting |
-| `pdf-reader-editor-scanner` | PDF Reader: Editor & Scanner | https://play.google.com/store/apps/details?id=com.sevenedge.pdfreader.docscanner.fileconverter |
+| `screen-mirroring-cast-to-tv` | Screen Mirroring Cast To TV | https://play.google.com/store/apps/details?id=miracast.screenmirroring.screencasting |
+| `pdf-reader-editor-scanner` | PDF Reader: Edit & Scan | https://play.google.com/store/apps/details?id=com.sevenedge.pdfreader.docscanner.fileconverter |
 | `pdf-reader-document-viewer` | PDF Reader: Document Viewer | https://play.google.com/store/apps/details?id=com.sevenedge.all.documentreader.and.pdfviewer.documents.app.filereader |
+| `file-recovery-data-restore` | File Recovery: Data Restore | https://play.google.com/store/apps/details?id=com.sevenedge.easyrecovery.datarecovery.recoverfiles |
+| `animal-ringtones-wallpapers` | Animal Ringtones & Wallpapers | https://play.google.com/store/apps/details?id=com.sevenedge.animalringtone.wallpaper.animalsounds |
 
 Each folder contains:
 

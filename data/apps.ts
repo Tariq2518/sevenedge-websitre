@@ -54,6 +54,8 @@ export const apps: PlayStoreApp[] = [
       "/apps/deleted-photo-video-recovery/screenshot-3.png",
       "/apps/deleted-photo-video-recovery/screenshot-4.png",
       "/apps/deleted-photo-video-recovery/screenshot-5.png",
+      "/apps/deleted-photo-video-recovery/screenshot-6.png",
+      "/apps/deleted-photo-video-recovery/screenshot-7.png",
     ],
     features: [
       "Scan supported storage for removed photos and videos",
@@ -83,6 +85,10 @@ export const apps: PlayStoreApp[] = [
       "/apps/status-saver-wa/screenshot-2.png",
       "/apps/status-saver-wa/screenshot-3.png",
       "/apps/status-saver-wa/screenshot-4.png",
+      "/apps/status-saver-wa/screenshot-5.png",
+      "/apps/status-saver-wa/screenshot-6.png",
+      "/apps/status-saver-wa/screenshot-7.png",
+      "/apps/status-saver-wa/screenshot-8.png",
     ],
     features: [
       "Preview supported photo and video statuses",
@@ -124,7 +130,7 @@ export const apps: PlayStoreApp[] = [
   },
   {
     id: "screen-mirroring-cast-to-tv",
-    name: "Screen Mirroring & Cast to TV",
+    name: "Screen Mirroring Cast To TV",
     packageId: "miracast.screenmirroring.screencasting",
     category: "Tools",
     shortDescription:
@@ -141,6 +147,10 @@ export const apps: PlayStoreApp[] = [
       "/apps/screen-mirroring-cast-to-tv/screenshot-2.png",
       "/apps/screen-mirroring-cast-to-tv/screenshot-3.png",
       "/apps/screen-mirroring-cast-to-tv/screenshot-4.png",
+      "/apps/screen-mirroring-cast-to-tv/screenshot-5.png",
+      "/apps/screen-mirroring-cast-to-tv/screenshot-6.png",
+      "/apps/screen-mirroring-cast-to-tv/screenshot-7.png",
+      "/apps/screen-mirroring-cast-to-tv/screenshot-8.png",
     ],
     features: [
       "Mirror a compatible device to a TV",
@@ -153,7 +163,7 @@ export const apps: PlayStoreApp[] = [
   },
   {
     id: "pdf-reader-editor-scanner",
-    name: "PDF Reader: Editor & Scanner",
+    name: "PDF Reader: Edit & Scan",
     packageId: "com.sevenedge.pdfreader.docscanner.fileconverter",
     category: "Productivity",
     shortDescription:
@@ -170,6 +180,11 @@ export const apps: PlayStoreApp[] = [
       "/apps/pdf-reader-editor-scanner/screenshot-2.png",
       "/apps/pdf-reader-editor-scanner/screenshot-3.png",
       "/apps/pdf-reader-editor-scanner/screenshot-4.png",
+      "/apps/pdf-reader-editor-scanner/screenshot-5.png",
+      "/apps/pdf-reader-editor-scanner/screenshot-6.png",
+      "/apps/pdf-reader-editor-scanner/screenshot-7.png",
+      "/apps/pdf-reader-editor-scanner/screenshot-8.png",
+      "/apps/pdf-reader-editor-scanner/screenshot-9.png",
     ],
     features: [
       "Open and read PDF documents",
@@ -201,12 +216,77 @@ export const apps: PlayStoreApp[] = [
       "/apps/pdf-reader-document-viewer/screenshot-3.png",
       "/apps/pdf-reader-document-viewer/screenshot-4.png",
       "/apps/pdf-reader-document-viewer/screenshot-5.png",
+      "/apps/pdf-reader-document-viewer/screenshot-6.png",
+      "/apps/pdf-reader-document-viewer/screenshot-7.png",
     ],
     features: [
       "Open PDF and other supported documents",
       "Comfortable reading view",
       "Manage documents on your device",
       "Lightweight and focused",
+    ],
+    featured: false,
+    status: "published",
+  },
+  {
+    id: "file-recovery-data-restore",
+    name: "File Recovery: Data Restore",
+    packageId: "com.sevenedge.easyrecovery.datarecovery.recoverfiles",
+    category: "Tools",
+    shortDescription:
+      "Scan for deleted photos, videos and files, then keep sensitive items in a locked private vault.",
+    longDescription:
+      "File Recovery: Data Restore scans supported device storage for deleted photos, videos, audio and documents so you can preview and restore what you still need. It also includes an encrypted vault for hiding sensitive files and an app lock for protecting other apps on your device.",
+    icon: "/apps/file-recovery-data-restore/icon.png",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.sevenedge.easyrecovery.datarecovery.recoverfiles",
+    privacyPolicyUrl:
+      "https://7edgetechnologies.blogspot.com/2026/06/easy-recovery-recover-files.html",
+    screenshots: [
+      "/apps/file-recovery-data-restore/screenshot-1.png",
+      "/apps/file-recovery-data-restore/screenshot-2.png",
+      "/apps/file-recovery-data-restore/screenshot-3.png",
+      "/apps/file-recovery-data-restore/screenshot-4.png",
+      "/apps/file-recovery-data-restore/screenshot-5.png",
+      "/apps/file-recovery-data-restore/screenshot-6.png",
+    ],
+    features: [
+      "Scan device storage for deleted photos, videos, audio and documents",
+      "Preview recoverable files before restoring",
+      "Encrypted private vault for sensitive photos and videos",
+      "App lock to protect chosen apps with a PIN or pattern",
+    ],
+    featured: false,
+    status: "published",
+  },
+  {
+    id: "animal-ringtones-wallpapers",
+    name: "Animal Ringtones & Wallpapers",
+    packageId: "com.sevenedge.animalringtone.wallpaper.animalsounds",
+    category: "Entertainment",
+    shortDescription:
+      "Real animal sounds for ringtones and alarms, plus HD animal wallpapers for your phone.",
+    longDescription:
+      "Animal Ringtones & Wallpapers offers a library of real animal sounds you can set as a ringtone, notification tone or alarm, alongside HD wallpapers organised by category for your home and lock screen.",
+    icon: "/apps/animal-ringtones-wallpapers/icon.png",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.sevenedge.animalringtone.wallpaper.animalsounds",
+    privacyPolicyUrl:
+      "https://7edgetechnologies.blogspot.com/2026/06/animal-ringtone-wallpaper-app.html",
+    screenshots: [
+      "/apps/animal-ringtones-wallpapers/screenshot-1.png",
+      "/apps/animal-ringtones-wallpapers/screenshot-2.png",
+      "/apps/animal-ringtones-wallpapers/screenshot-3.png",
+      "/apps/animal-ringtones-wallpapers/screenshot-4.png",
+      "/apps/animal-ringtones-wallpapers/screenshot-5.png",
+      "/apps/animal-ringtones-wallpapers/screenshot-6.png",
+      "/apps/animal-ringtones-wallpapers/screenshot-7.png",
+    ],
+    features: [
+      "Real animal sounds for ringtones, notifications and alarms",
+      "HD wallpapers organised into animal categories",
+      "Preview sounds and wallpapers before applying",
+      "Favorites and search for quick access",
     ],
     featured: false,
     status: "published",
