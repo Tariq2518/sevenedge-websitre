@@ -22,7 +22,11 @@ in sync.
 Each folder contains:
 
 - `icon.png` — 512×512 app icon
-- `screenshot-1.png … screenshot-N.png` — portrait phone screenshots
+- `screenshot-1.png … screenshot-N.png` — portrait phone screenshots, in listing
+  order. Landscape feature banners and duplicate tablet sets from the listing are
+  intentionally left out so the detail-page screenshot strip stays uniform.
+
+Last refreshed from Google Play: 2026-11-05.
 
 App descriptions in `data/apps.ts` are original summaries written from the
 listings. No ratings, download counts, or other metrics are reproduced.

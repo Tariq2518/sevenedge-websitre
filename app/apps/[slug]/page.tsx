@@ -121,53 +121,52 @@ export default async function AppDetailPage({
       </header>
 
       {/* Body */}
-      <div className="mt-12 grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-14">
-        <div className="flex flex-col gap-8">
-          <section>
-            <h2 className="text-xl font-semibold">About this app</h2>
-            <p className="mt-3 leading-relaxed text-content-secondary">
-              {app.longDescription ?? app.shortDescription}
-            </p>
-          </section>
+      <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-14">
+        <section className="min-w-0">
+          <h2 className="text-xl font-semibold">About this app</h2>
+          <p className="mt-3 leading-relaxed text-content-secondary">
+            {app.longDescription ?? app.shortDescription}
+          </p>
+        </section>
 
-          {app.features && (
-            <section>
-              <h2 className="text-xl font-semibold">Highlights</h2>
-              <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-                {app.features.map((feature) => (
-                  <li
-                    key={feature}
-                    className="card flex items-start gap-2.5 p-4 text-sm text-content-secondary"
-                  >
-                    <Check className="mt-0.5 h-4 w-4 flex-none text-brand" aria-hidden="true" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-        </div>
-
-        {/* Screenshots */}
-        {app.screenshots && app.screenshots.length > 0 && (
-          <section aria-label="Screenshots">
-            <h2 className="text-xl font-semibold">Screenshots</h2>
-            <div className="mt-4 flex gap-4 overflow-x-auto pb-2">
-              {app.screenshots.map((src, i) => (
-                <Image
-                  key={src}
-                  src={src}
-                  alt={`${app.name} screenshot ${i + 1}`}
-                  width={300}
-                  height={533}
-                  loading={i === 0 ? "eager" : "lazy"}
-                  className="h-auto w-40 flex-none rounded-2xl border border-line sm:w-44"
-                />
+        {app.features && (
+          <section className="min-w-0">
+            <h2 className="text-xl font-semibold">Highlights</h2>
+            <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+              {app.features.map((feature) => (
+                <li
+                  key={feature}
+                  className="card flex items-start gap-2.5 p-4 text-sm text-content-secondary"
+                >
+                  <Check className="mt-0.5 h-4 w-4 flex-none text-brand" aria-hidden="true" />
+                  <span>{feature}</span>
+                </li>
               ))}
-            </div>
+            </ul>
           </section>
         )}
       </div>
+
+      {/* Screenshots — full-width row that scrolls horizontally on its own */}
+      {app.screenshots && app.screenshots.length > 0 && (
+        <section aria-label="Screenshots" className="mt-14 min-w-0">
+          <h2 className="text-xl font-semibold">Screenshots</h2>
+          <div className="mt-4 flex snap-x gap-4 overflow-x-auto pb-3">
+            {app.screenshots.map((src, i) => (
+              <Image
+                key={src}
+                src={src}
+                alt={`${app.name} screenshot ${i + 1}`}
+                width={720}
+                height={1280}
+                sizes="(min-width: 640px) 13rem, 10rem"
+                loading={i < 3 ? "eager" : "lazy"}
+                className="aspect-[9/16] w-40 flex-none snap-start rounded-2xl border border-line bg-surface-muted object-cover sm:w-52"
+              />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Related */}
       {related.length > 0 && (
