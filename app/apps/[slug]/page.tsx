@@ -21,15 +21,40 @@ export async function generateMetadata({
   const app = getAppBySlug(slug);
   if (!app) return {};
 
+  const title = `${app.name} for Android`;
+  const images = [
+    { url: app.icon, width: 512, height: 512, alt: `${app.name} app icon` },
+    { url: "/og.png", width: 1200, height: 630, alt: siteConfig.name },
+  ];
+
   return {
-    title: app.name,
+    title,
     description: app.shortDescription,
+    keywords: [
+      app.name,
+      `${app.name} app`,
+      `${app.name} Android`,
+      `${app.category} app`,
+      ...(app.features ?? []).slice(0, 4),
+      siteConfig.name,
+    ],
     alternates: { canonical: `/apps/${app.id}` },
     openGraph: {
-      title: `${app.name} — ${siteConfig.name}`,
+      title: `${title} — ${siteConfig.name}`,
       description: app.shortDescription,
       url: absoluteUrl(`/apps/${app.id}`),
+      siteName: siteConfig.name,
       type: "website",
+      images,
+    },
+    twitter: {
+      card: "summary",
+      title: `${title} — ${siteConfig.name}`,
+      description: app.shortDescription,
+      images: [app.icon],
+    },
+    other: {
+      "google-play-app": `app-id=${app.packageId}`,
     },
   };
 }
@@ -46,21 +71,45 @@ export default async function AppDetailPage({
   const related = apps.filter((a) => a.id !== app.id && a.status !== "coming-soon").slice(0, 3);
 
   // SoftwareApplication structured data — only listing-derived fields.
+  const pageUrl = absoluteUrl(`/apps/${app.id}`);
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: app.name,
-    description: app.shortDescription,
-    applicationCategory: "MobileApplication",
-    operatingSystem: "Android",
-    url: absoluteUrl(`/apps/${app.id}`),
-    image: absoluteUrl(app.icon),
-    downloadUrl: app.playStoreUrl,
-    author: {
-      "@type": "Organization",
-      name: siteConfig.name,
-      url: siteConfig.url,
-    },
+    "@graph": [
+      {
+        "@type": "MobileApplication",
+        "@id": `${pageUrl}#app`,
+        name: app.name,
+        description: app.longDescription ?? app.shortDescription,
+        applicationCategory: "UtilitiesApplication",
+        applicationSubCategory: app.category,
+        operatingSystem: "Android",
+        url: pageUrl,
+        image: absoluteUrl(app.icon),
+        ...(app.screenshots?.length
+          ? { screenshot: app.screenshots.map((src) => absoluteUrl(src)) }
+          : {}),
+        ...(app.features?.length ? { featureList: app.features } : {}),
+        downloadUrl: app.playStoreUrl,
+        installUrl: app.playStoreUrl,
+        sameAs: [app.playStoreUrl],
+        offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+        author: { "@id": `${siteConfig.url}/#organization` },
+        publisher: {
+          "@type": "Organization",
+          "@id": `${siteConfig.url}/#organization`,
+          name: siteConfig.name,
+          url: siteConfig.url,
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+          { "@type": "ListItem", position: 2, name: "Apps", item: absoluteUrl("/#apps") },
+          { "@type": "ListItem", position: 3, name: app.name, item: pageUrl },
+        ],
+      },
+    ],
   };
 
   return (

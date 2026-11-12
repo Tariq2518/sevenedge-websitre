@@ -10,7 +10,20 @@ import ContactForm from "@/components/ContactForm";
 import Reveal from "@/components/Reveal";
 import { services } from "@/data/services";
 import { publishedApps, featuredApp } from "@/data/apps";
-import { siteConfig, mailtoLink } from "@/lib/site-config";
+import { siteConfig, mailtoLink, absoluteUrl } from "@/lib/site-config";
+
+// Lists every published app so search engines can discover the portfolio.
+const appsJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: `${siteConfig.name} Android applications`,
+  itemListElement: publishedApps.map((app, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    url: absoluteUrl(`/apps/${app.id}`),
+    name: app.name,
+  })),
+};
 
 const aboutValues = [
   "Practical by design",
@@ -47,6 +60,10 @@ export default function HomePage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(appsJsonLd) }}
+      />
       <Hero />
 
       {/* Services */}

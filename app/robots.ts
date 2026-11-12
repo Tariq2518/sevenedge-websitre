@@ -3,8 +3,9 @@ import { siteConfig, absoluteUrl } from "@/lib/site-config";
 
 export const dynamic = "force-static";
 
-// AI assistants / search crawlers that are explicitly welcomed (official
-// OpenAI and Anthropic user agents). Verified against their public docs.
+// Search engines and AI assistants that are explicitly welcomed, so the site
+// can appear in Google, Bing, Apple, DuckDuckGo, Yandex, ChatGPT, Claude,
+// Perplexity and Gemini answers.
 const aiCrawlers = [
   "GPTBot",
   "OAI-SearchBot",
@@ -12,6 +13,17 @@ const aiCrawlers = [
   "ClaudeBot",
   "Claude-SearchBot",
   "Claude-User",
+  "Google-Extended",
+  "Googlebot",
+  "Bingbot",
+  "Applebot",
+  "Applebot-Extended",
+  "PerplexityBot",
+  "Perplexity-User",
+  "DuckDuckBot",
+  "YandexBot",
+  "CCBot",
+  "Meta-ExternalAgent",
 ];
 
 const disallow = [
@@ -26,7 +38,7 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       { userAgent: "*", allow: "/", disallow },
-      ...aiCrawlers.map((userAgent) => ({ userAgent, allow: "/" })),
+      ...aiCrawlers.map((userAgent) => ({ userAgent, allow: "/", disallow })),
     ],
     sitemap: absoluteUrl("/sitemap.xml"),
     host: siteConfig.url,

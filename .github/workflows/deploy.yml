@@ -37,3 +37,18 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy out --project-name=sevenedge --branch=main
+
+      # Tell Bing, Yandex, Seznam, Naver & other IndexNow engines about every URL
+      # in the sitemap right after each deploy (key file: public/<key>.txt).
+      - name: Ping IndexNow
+        continue-on-error: true
+        env:
+          INDEXNOW_KEY: 8cfea872b0d2c6e4b39aebfb67d0dbb3
+        run: |
+          grep -o '<loc>[^<]*</loc>' out/sitemap.xml | sed -E 's#</?loc>##g' \
+            | jq -R . | jq -s --arg key "$INDEXNOW_KEY" \
+              '{host: "sevenedge.app", key: $key, keyLocation: ("https://sevenedge.app/" + $key + ".txt"), urlList: .}' \
+            > indexnow.json
+          curl -sS -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            --data @indexnow.json -w '\nIndexNow HTTP %{http_code}\n'

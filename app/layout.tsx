@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -27,8 +27,19 @@ export const metadata: Metadata = {
     "web development",
     "UI design",
     "independent software studio",
+    "Android app developer",
+    "app development studio",
+    "data recovery app",
+    "PDF reader app",
+    "screen mirroring app",
+    "video downloader app",
+    "status saver app",
   ],
-  alternates: { canonical: "/" },
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  category: "technology",
+  formatDetection: { email: false, telephone: false, address: false },
   openGraph: {
     type: "website",
     siteName: siteConfig.name,
@@ -51,22 +62,70 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: ["/og.png"],
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  alternates: {
+    canonical: "/",
+    types: { "text/plain": [{ url: "/llms.txt", title: "LLM-readable summary" }] },
+  },
 };
 
-// Organization structured data — only verified fields, no fabricated metrics.
-const orgJsonLd = {
+export const viewport: Viewport = {
+  themeColor: "#6c45e6",
+  width: "device-width",
+  initialScale: 1,
+};
+
+// Site-wide structured data — only verified fields, no fabricated metrics.
+const orgId = `${siteConfig.url}/#organization`;
+const siteJsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: siteConfig.name,
-  url: siteConfig.url,
-  logo: absoluteUrl("/icon.svg"),
-  image: absoluteUrl("/icon.svg"),
-  description: siteConfig.description,
-  foundingDate: String(siteConfig.foundingYear),
-  email: siteConfig.email,
-  sameAs: [siteConfig.playStoreDeveloperUrl],
-  knowsAbout: services.map((s) => s.title),
+  "@graph": [
+    {
+      "@type": ["Organization", "ProfessionalService"],
+      "@id": orgId,
+      name: siteConfig.name,
+      alternateName: ["7edge", "Seven Edge Apps", "7edge Technologies"],
+      url: siteConfig.url,
+      logo: {
+        "@type": "ImageObject",
+        url: absoluteUrl("/logo.png"),
+        width: 512,
+        height: 512,
+      },
+      image: absoluteUrl("/og.png"),
+      description: siteConfig.description,
+      foundingDate: String(siteConfig.foundingYear),
+      email: siteConfig.email,
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        email: siteConfig.email,
+        availableLanguage: ["English"],
+      },
+      sameAs: [siteConfig.playStoreDeveloperUrl],
+      knowsAbout: services.map((s) => s.title),
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteConfig.url}/#website`,
+      name: siteConfig.name,
+      alternateName: "7edge",
+      url: siteConfig.url,
+      description: siteConfig.description,
+      inLanguage: "en",
+      publisher: { "@id": orgId },
+    },
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -84,7 +143,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
         />
       </body>
     </html>

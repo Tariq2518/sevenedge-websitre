@@ -15,13 +15,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.3,
     },
+    {
+      url: absoluteUrl("/llms.txt"),
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.2,
+    },
   ];
 
   const appRoutes: MetadataRoute.Sitemap = publishedApps.map((app) => ({
     url: absoluteUrl(`/apps/${app.id}`),
     lastModified: now,
     changeFrequency: "monthly",
-    priority: 0.7,
+    priority: 0.8,
+    images: [absoluteUrl(app.icon), ...(app.screenshots ?? []).map((src) => absoluteUrl(src))],
   }));
 
   return [...staticRoutes, ...appRoutes];
