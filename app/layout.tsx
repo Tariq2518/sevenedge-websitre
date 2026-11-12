@@ -48,6 +48,10 @@ export const metadata: Metadata = {
   publisher: siteConfig.name,
   category: "technology",
   formatDetection: { email: false, telephone: false, address: false },
+  // Search engine ownership (keep: removing it un-verifies the site).
+  verification: {
+    other: { "msvalidate.01": "CACD9230FCCAD7B55E53B6CDFA45EA00" },
+  },
   openGraph: {
     type: "website",
     siteName: siteConfig.name,
