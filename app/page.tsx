@@ -5,6 +5,7 @@ import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
 import AppCard from "@/components/AppCard";
 import FeaturedApp from "@/components/FeaturedApp";
+import Founder from "@/components/Founder";
 import ProcessStep from "@/components/ProcessStep";
 import ContactForm from "@/components/ContactForm";
 import Reveal from "@/components/Reveal";
@@ -24,13 +25,6 @@ const appsJsonLd = {
     name: app.name,
   })),
 };
-
-const aboutValues = [
-  "Practical by design",
-  "Built with care",
-  "Focused on quality",
-  "Continuously improving",
-];
 
 const processSteps = [
   {
@@ -141,37 +135,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* About */}
-      <section id="about" data-anchor className="py-20 lg:py-28">
-        <div className="container-page grid gap-12 lg:grid-cols-2 lg:items-center">
-          <SectionHeading
-            align="left"
-            eyebrow="Independent studio · Established 2022"
-            title="Independent by structure. Focused by design."
-            description="Established in 2022, 7edge Apps is a solo development studio focused on building useful mobile applications and modern web experiences. Direct ownership across design, development, testing, and improvement keeps every product consistent and carefully considered."
-          />
-
-          <Reveal className="flex flex-col gap-5">
-            <p className="text-sm leading-relaxed text-content-secondary">
-              As a solo development studio, every product receives direct attention
-              across planning, design, development, testing, release, and continuous
-              improvement. The goal is to create useful, reliable, and accessible
-              software that solves real problems without unnecessary complexity.
-            </p>
-            <ul className="grid grid-cols-2 gap-3">
-              {aboutValues.map((value) => (
-                <li
-                  key={value}
-                  className="card flex items-center gap-2.5 px-4 py-3 text-sm font-medium text-content-primary"
-                >
-                  <span className="h-2 w-2 flex-none rounded-full bg-brand" aria-hidden="true" />
-                  {value}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-        </div>
-      </section>
+      <Founder />
 
       {/* Process */}
       <section className="border-y border-line bg-surface-muted py-20 lg:py-28">

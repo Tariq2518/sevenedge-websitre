@@ -54,6 +54,16 @@ export default function Footer() {
               </a>
             </li>
             <li>
+              <a
+                href={siteConfig.founder.portfolio}
+                target="_blank"
+                rel="noopener me"
+                className="text-sm text-content-secondary transition-colors hover:text-brand"
+              >
+                Founder: {siteConfig.founder.name}
+              </a>
+            </li>
+            <li>
               <Link
                 href="/privacy"
                 className="text-sm text-content-secondary transition-colors hover:text-brand"

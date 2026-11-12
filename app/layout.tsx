@@ -126,6 +126,22 @@ const siteJsonLd = {
       },
       sameAs: [siteConfig.playStoreDeveloperUrl],
       knowsAbout: services.map((s) => s.title),
+      founder: { "@id": `${siteConfig.url}/#founder` },
+    },
+    {
+      "@type": "Person",
+      "@id": `${siteConfig.url}/#founder`,
+      name: siteConfig.founder.name,
+      jobTitle: siteConfig.founder.role,
+      image: absoluteUrl(siteConfig.founder.image),
+      url: siteConfig.founder.portfolio,
+      sameAs: [
+        siteConfig.founder.portfolio,
+        siteConfig.founder.linkedin,
+        siteConfig.founder.github,
+      ],
+      worksFor: { "@id": orgId },
+      knowsAbout: ["Android development", "iOS development", "Kotlin", "Swift", "Jetpack Compose", "SwiftUI", "AdMob"],
     },
     {
       "@type": "WebSite",

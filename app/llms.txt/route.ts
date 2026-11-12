@@ -31,6 +31,7 @@ export function GET() {
     `- FAQ: ${absoluteUrl("/faq")}`,
     `- Privacy Policy: ${absoluteUrl("/privacy")}`,
     `- Google Play developer profile: ${siteConfig.playStoreDeveloperUrl}`,
+    `- Founder: ${siteConfig.founder.name}, ${siteConfig.founder.role} (${siteConfig.founder.portfolio})`,
     `- Sitemap: ${absoluteUrl("/sitemap.xml")}`,
     "",
     "## Contact",

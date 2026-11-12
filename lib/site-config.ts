@@ -18,6 +18,15 @@ export const siteConfig = {
   /** Public Google Play developer profile. */
   playStoreDeveloperUrl:
     "https://play.google.com/store/apps/dev?id=7291930717928398074",
+  /** Founder: shown in the Founder section and as schema.org Person. */
+  founder: {
+    name: "Tariq Hussain",
+    role: "Founder & Mobile App Developer",
+    image: "/founder/tariq-hussain.jpg",
+    portfolio: "https://tariqhussain.vercel.app",
+    linkedin: "https://www.linkedin.com/in/tariqhpk",
+    github: "https://github.com/tariq2518",
+  },
   /** Final production domain. Override with NEXT_PUBLIC_SITE_URL. */
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://sevenedge.app").replace(
     /\/$/,
