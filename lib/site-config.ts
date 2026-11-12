@@ -19,7 +19,7 @@ export const siteConfig = {
   playStoreDeveloperUrl:
     "https://play.google.com/store/apps/dev?id=7291930717928398074",
   /** Final production domain. Override with NEXT_PUBLIC_SITE_URL. */
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://sevenedge.pages.dev").replace(
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://sevenedge.app").replace(
     /\/$/,
     "",
   ),

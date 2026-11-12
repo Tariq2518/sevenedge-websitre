@@ -18,7 +18,7 @@ pages_build_output_dir = "out"
 # Build-time public var (used for canonical URLs, sitemap, robots, OG, llms.txt).
 # Safe to commit — it is not a secret.
 [vars]
-NEXT_PUBLIC_SITE_URL = "https://sevenedge.pages.dev"
+NEXT_PUBLIC_SITE_URL = "https://sevenedge.app"
 
 # Contact-form delivery (Resend) is OPTIONAL. Do NOT put secrets here.
 # Set them as encrypted secrets instead, e.g.:

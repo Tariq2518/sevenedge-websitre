@@ -29,7 +29,7 @@ jobs:
 
       - run: npm run build
         env:
-          NEXT_PUBLIC_SITE_URL: https://sevenedge.pages.dev
+          NEXT_PUBLIC_SITE_URL: https://sevenedge.app
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
