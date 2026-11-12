@@ -1,133 +1,124 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
-import Reveal from "./Reveal";
-import { apps, featuredApp } from "@/data/apps";
+import { ArrowRight, Play } from "lucide-react";
+import { publishedApps, getAppBySlug } from "@/data/apps";
+import { siteConfig } from "@/lib/site-config";
 
-const labels = ["Mobile Apps", "Web Development", "UI Design"];
+/*
+ * Landing-page hero (tasteskill v2.5, kind: software, hero: centred).
+ * Centred statement and actions, then a row of real Play Store screens from
+ * five apps, the document reader in the middle.
+ * Enters once on load; no scroll-linked motion.
+ */
 
-// A few real portfolio icons to float around the featured card.
-const floatingIcons = apps.filter((app) => app.id !== featuredApp.id).slice(0, 4);
+const NEWEST = "voice-changer-voice-effects";
+
+const screens = [
+  { slug: "status-saver-wa", shot: 1 },
+  { slug: "deleted-photo-video-recovery", shot: 1 },
+  { slug: "pdf-reader-editor-scanner", shot: 1 },
+  { slug: NEWEST, shot: 1 },
+  { slug: "screen-mirroring-cast-to-tv", shot: 1 },
+];
 
 export default function Hero() {
+  const newest = getAppBySlug(NEWEST)!;
+
   return (
     <section
       id="home"
       data-anchor
-      className="relative overflow-hidden pt-28 sm:pt-32 lg:pt-36"
+      className="relative overflow-hidden pb-16 pt-24 text-center sm:pt-[104px] lg:pb-24"
     >
-      {/* Soft decorative brand shapes + dot grid */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full brand-glow" />
-        <div className="absolute right-0 top-40 h-80 w-80 rounded-full brand-glow" />
-        <div className="absolute inset-x-0 top-0 h-[480px] bg-dot-grid opacity-60 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
+      <div className="container-page flex flex-col items-center">
+        <Link
+          href={`/apps/${newest.id}`}
+          className="hero-in group inline-flex min-h-[40px] items-center gap-2.5 rounded-full border border-line bg-surface py-1.5 pl-2 pr-4 text-sm text-content-secondary transition-colors hover:border-brand/40"
+        >
+          <Image src={newest.icon} alt="" width={24} height={24} className="h-6 w-6 rounded-md" />
+          <span>
+            <span className="font-medium text-content-primary">New:</span> Voice Changer
+            with 28 voice effects
+          </span>
+          <ArrowRight
+            className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
+            aria-hidden="true"
+          />
+        </Link>
+
+        <h1
+          className="hero-in mt-6 max-w-[17ch] font-sans text-[2.6rem] font-semibold leading-[1.05] tracking-[-0.035em] text-content-primary sm:text-[3.75rem] lg:text-[4.5rem]"
+          style={{ animationDelay: "60ms" }}
+        >
+          Android apps that make your phone more useful
+        </h1>
+
+        <p
+          className="hero-in mt-5 max-w-[54ch] text-base leading-relaxed text-content-secondary sm:text-lg"
+          style={{ animationDelay: "120ms" }}
+        >
+          Recover deleted photos, scan PDFs, cast to your TV, save statuses and change
+          your voice. {publishedApps.length} free apps from {siteConfig.name}, on Google
+          Play since {siteConfig.foundingYear}.
+        </p>
+
+        <div
+          className="hero-in mt-7 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row"
+          style={{ animationDelay: "180ms" }}
+        >
+          <a
+            href={siteConfig.playStoreDeveloperUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn group min-h-[52px] bg-content-primary px-6 text-white transition-transform hover:bg-black active:scale-[0.98]"
+          >
+            <Play className="h-4 w-4 fill-current" aria-hidden="true" />
+            Get the apps on Google Play
+          </a>
+          <Link
+            href="/#contact"
+            className="btn-secondary min-h-[52px] px-6 transition-transform active:scale-[0.98]"
+          >
+            Start a client project
+          </Link>
+        </div>
       </div>
 
-      <div className="container-page grid items-center gap-12 pb-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:pb-24">
-        {/* Copy */}
-        <div className="flex flex-col items-start gap-6">
-          <Reveal>
-            <span className="eyebrow">
-              <Sparkles className="h-3.5 w-3.5 text-brand" aria-hidden="true" />
-              Independent software studio · Since 2022
-            </span>
-          </Reveal>
-
-          <Reveal delay={60}>
-            <h1 className="text-4xl font-semibold leading-[1.08] text-content-primary sm:text-5xl lg:text-[3.4rem]">
-              Digital products built to be{" "}
-              <span className="text-gradient">useful, clear, and dependable.</span>
-            </h1>
-          </Reveal>
-
-          <Reveal delay={120}>
-            <p className="max-w-xl text-base leading-relaxed text-content-secondary sm:text-lg">
-              7edge Apps creates practical mobile applications, modern websites, and
-              thoughtfully designed user experiences—from initial concept to production
-              release.
-            </p>
-          </Reveal>
-
-          <Reveal delay={180} className="w-full">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Link href="/#apps" className="btn-primary group w-full sm:w-auto">
-                Explore Our Apps
-                <ArrowRight
-                  className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
-                  aria-hidden="true"
-                />
-              </Link>
-              <Link href="/#contact" className="btn-secondary w-full sm:w-auto">
-                Discuss a Project
-              </Link>
-            </div>
-          </Reveal>
-
-          <Reveal delay={240}>
-            <ul className="flex flex-wrap gap-2 pt-2">
-              {labels.map((label) => (
-                <li
-                  key={label}
-                  className="rounded-full bg-brand-soft px-3 py-1 text-xs font-medium text-brand"
-                >
-                  {label}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-        </div>
-
-        {/* Visual composition built from real app icons */}
-        <Reveal delay={160} className="relative">
-          <div className="relative mx-auto aspect-square w-full max-w-md">
-            {/* Featured card, centered */}
-            <div className="absolute left-1/2 top-1/2 z-20 w-56 -translate-x-1/2 -translate-y-1/2 sm:w-64">
-              <div className="card flex flex-col items-center gap-4 p-6 shadow-lift">
-                <Image
-                  src={featuredApp.icon}
-                  alt={`${featuredApp.name} app icon`}
-                  width={96}
-                  height={96}
-                  priority
-                  className="h-20 w-20 rounded-2xl border border-line sm:h-24 sm:w-24"
-                />
-                <div className="text-center">
-                  <p className="text-sm font-semibold text-content-primary">
-                    {featuredApp.name}
-                  </p>
-                  <p className="mt-1 text-xs text-content-secondary">
-                    {featuredApp.category}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Floating real icons */}
-            {floatingIcons.map((app, i) => {
-              const positions = [
-                "left-0 top-6",
-                "right-0 top-16",
-                "bottom-10 left-2",
-                "bottom-0 right-6",
-              ];
-              return (
-                <div
-                  key={app.id}
-                  className={`absolute z-10 ${positions[i]} animate-float`}
-                  style={{ animationDelay: `${i * 0.8}s` }}
+      {/* Real screens, document reader in the middle */}
+      <div
+        className="hero-in relative mt-10 sm:mt-12"
+        style={{ animationDelay: "240ms" }}
+      >
+        <ul className="mx-auto flex max-w-[1180px] items-start justify-center gap-3 px-4 sm:gap-5">
+          {screens.map(({ slug, shot }, i) => {
+            const app = getAppBySlug(slug)!;
+            const centre = i === 2;
+            const edge = i === 0 || i === 4;
+            return (
+              <li
+                key={slug}
+                className={`${edge ? "hidden md:block" : ""} ${
+                  centre ? "w-[46%] sm:w-[230px]" : "w-[30%] sm:w-[200px] sm:pt-8"
+                } flex-none`}
+              >
+                <Link
+                  href={`/apps/${app.id}`}
+                  className="group block overflow-hidden rounded-[1.6rem] shadow-[0_30px_60px_-30px_rgba(16,18,27,0.45)] ring-1 ring-black/5 transition-transform duration-300 hover:-translate-y-0.5"
                 >
                   <Image
-                    src={app.icon}
-                    alt={`${app.name} app icon`}
-                    width={64}
-                    height={64}
-                    className="h-12 w-12 rounded-xl border border-line bg-surface shadow-soft sm:h-14 sm:w-14"
+                    src={`/apps/${slug}/screenshot-${shot}.png`}
+                    alt={`${app.name} on Android`}
+                    width={460}
+                    height={818}
+                    priority
+                    sizes="(min-width: 640px) 230px, 46vw"
+                    className="aspect-[9/16] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   />
-                </div>
-              );
-            })}
-          </div>
-        </Reveal>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </section>
   );

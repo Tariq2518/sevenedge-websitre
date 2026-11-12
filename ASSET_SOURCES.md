@@ -18,6 +18,7 @@ in sync.
 | `pdf-reader-document-viewer` | PDF Reader: Document Viewer | https://play.google.com/store/apps/details?id=com.sevenedge.all.documentreader.and.pdfviewer.documents.app.filereader |
 | `file-recovery-data-restore` | File Recovery: Data Restore | https://play.google.com/store/apps/details?id=com.sevenedge.easyrecovery.datarecovery.recoverfiles |
 | `animal-ringtones-wallpapers` | Animal Ringtones & Wallpapers | https://play.google.com/store/apps/details?id=com.sevenedge.animalringtone.wallpaper.animalsounds |
+| `voice-changer-voice-effects` | Voice Changer - Voice Effects | https://play.google.com/store/apps/details?id=com.sevenedge.voicechanger.soundeffects |
 
 Each folder contains:
 
@@ -26,7 +27,7 @@ Each folder contains:
   order. Landscape feature banners and duplicate tablet sets from the listing are
   intentionally left out so the detail-page screenshot strip stays uniform.
 
-Last refreshed from Google Play: 2026-11-05.
+Last refreshed from Google Play: 2026-11-12.
 
 App descriptions in `data/apps.ts` are original summaries written from the
 listings. No ratings, download counts, or other metrics are reproduced.

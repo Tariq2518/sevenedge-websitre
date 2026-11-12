@@ -32,6 +32,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "var(--font-sans)", "ui-sans-serif", "sans-serif"],
       },
       maxWidth: {
         content: "1180px",
@@ -52,8 +53,13 @@ const config: Config = {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" },
         },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
       },
       animation: {
+        marquee: "marquee 60s linear infinite",
         "fade-up": "fade-up 0.6s ease-out both",
         float: "float 6s ease-in-out infinite",
       },

@@ -28,6 +28,7 @@ export function GET() {
     `- Apps: ${absoluteUrl("/#apps")}`,
     `- About: ${absoluteUrl("/#about")}`,
     `- Contact: ${absoluteUrl("/#contact")}`,
+    `- FAQ: ${absoluteUrl("/faq")}`,
     `- Privacy Policy: ${absoluteUrl("/privacy")}`,
     `- Google Play developer profile: ${siteConfig.playStoreDeveloperUrl}`,
     `- Sitemap: ${absoluteUrl("/sitemap.xml")}`,

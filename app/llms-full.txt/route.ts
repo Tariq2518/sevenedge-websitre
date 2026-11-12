@@ -1,6 +1,7 @@
 import { siteConfig, absoluteUrl } from "@/lib/site-config";
 import { services } from "@/data/services";
 import { publishedApps } from "@/data/apps";
+import { faqGroups } from "@/data/faqs";
 
 export const dynamic = "force-static";
 
@@ -46,10 +47,17 @@ export function GET() {
     );
   }
 
+  lines.push("## Frequently asked questions", "");
+  for (const g of faqGroups) {
+    lines.push(`### ${g.title}`, "");
+    for (const f of g.items) lines.push(`Q: ${f.q}`, `A: ${f.a}`, "");
+  }
+
   lines.push(
     "## Links",
     "",
     `- Website: ${siteConfig.url}`,
+    `- FAQ: ${absoluteUrl("/faq")}`,
     `- Privacy Policy: ${absoluteUrl("/privacy")}`,
     `- Google Play developer profile: ${siteConfig.playStoreDeveloperUrl}`,
     `- Sitemap: ${absoluteUrl("/sitemap.xml")}`,

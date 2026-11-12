@@ -232,6 +232,31 @@ export const apps: PlayStoreApp[] = [
     featured: false,
     status: "published",
   },
+  {
+    id: "voice-changer-voice-effects",
+    name: "Voice Changer - Voice Effects",
+    packageId: "com.sevenedge.voicechanger.soundeffects",
+    category: "Entertainment",
+    shortDescription:
+      "Record or import audio and play it back as a robot, chipmunk, monster, ghost and 24 other voices. Works offline.",
+    longDescription:
+      "Voice Changer - Voice Effects turns any recording into something fun. Record your voice or import an audio file, pick one of 28 effects, and preview the result instantly. Build your own effect with pitch, speed, echo and reverb, type text and hear it spoken in a new voice, trim clips, and share them or set them as a ringtone. Everything is processed on your phone, so it works offline and your audio never leaves the device.",
+    icon: "/apps/voice-changer-voice-effects/icon.png",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.sevenedge.voicechanger.soundeffects",
+    privacyPolicyUrl:
+      "https://7edgetechnologies.blogspot.com/2026/11/voice-changer-privacy-policy.html",
+    screenshots: shots("voice-changer-voice-effects", 5),
+    features: [
+      "28 voice effects, from robot and alien to echo and reverse",
+      "Custom effect editor for pitch, speed, echo and reverb",
+      "Text to speech in any voice",
+      "Trim, share, or set clips as a ringtone",
+      "Works fully offline in 8 languages",
+    ],
+    featured: false,
+    status: "published",
+  },
 ];
 
 /** All apps that should appear in listings, sitemap and structured data. */

@@ -32,3 +32,4 @@ yarn-error.log*
 
 # wrangler local cache
 .wrangler/
+.taste-skill/
